@@ -13,6 +13,7 @@
 }
 
 .card__title {
+  margin: 0;
   font-weight: 500;
   font-size: 20px;
   line-height: 120%;
@@ -44,7 +45,6 @@
   }
 
   .card__title {
-    font-weight: 400;
     font-size: 16px;
     line-height: 100%;
   }
