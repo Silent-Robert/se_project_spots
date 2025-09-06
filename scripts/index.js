@@ -50,10 +50,12 @@ const newPostCaptionInput = newPostModal.querySelector("#image-caption-input");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
-// const previewModal = document.querySelector("#preview-modal");
-// // const previewModalCloseBtn = previewModal.querySelector(".model__close");
-// // const previewImageEl = previewModal.querySelector(".modal__image");
-// // select name /caption
+const previewModal = document.querySelector("#preview-modal");
+const previewModalCloseBtn = previewModal.querySelector(
+  ".modal__close-btn_type_preview"
+);
+const previewImageEl = previewModal.querySelector(".modal__image");
+const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -81,12 +83,17 @@ function getCardElement(data) {
 
   cardImageEl.addEventListener("click", () => {
     previewImageEl.src = data.link;
-    // set other attributes
+    previewImageEl.alt = data.name;
+    previewCaptionEl.textContent = data.name;
     openModal(previewModal);
   });
 
   return cardElement;
 }
+
+previewModalCloseBtn.addEventListener("click", function () {
+  closeModal(previewModal);
+});
 
 function openModal(modal) {
   modal.classList.add("modal_is-open");
@@ -113,8 +120,6 @@ newPostBtn.addEventListener("click", function () {
 newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
-
-// set click listner
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
